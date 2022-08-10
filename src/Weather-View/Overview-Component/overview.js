@@ -6,7 +6,7 @@ export default function Overview(props) {
     return(
         <div className="container">
             <div className="row">
-                <button className="btn btn-primary" onClick={apiCall}>load</button>
+
                 <div className="col-12">
                     <div className="card">
                         <div className="card-body">
@@ -40,7 +40,7 @@ export default function Overview(props) {
                                     })()}
                                 </div>
                                 <div className="col temperature">
-                                    {weather.temp}
+                                    {props.temp}
                                 </div>
                             </div>
                         </div>
