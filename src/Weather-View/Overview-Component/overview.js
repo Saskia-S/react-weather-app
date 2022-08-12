@@ -1,7 +1,8 @@
 import './overview.css'
 
 export default function Overview(props) {
-    let weatherIcon = props.icon;
+    let weatherIcon = props.weatherData.icon;
+    console.log(weatherIcon);
 
     return(
         <div className="container">
@@ -18,8 +19,6 @@ export default function Overview(props) {
                                                 return(<i className="bi bi-sun"></i>);
                                             case '02d':
                                                 return(<i className="bi bi-cloud-sun"></i>);
-                                            case '02d':
-                                                return(<i className="bi bi-cloud-sun"></i>);
                                             case '03d':
                                                 return(<i className="bi bi-cloudy"></i>);
                                             case '04d':
@@ -34,13 +33,31 @@ export default function Overview(props) {
                                                 return(<i className="bi bi-snow"></i>);
                                             case '50d':
                                                 return(<i className="bi bi-cloud-fog"></i>);
+                                            case '01n':
+                                                return(<i className="bi bi-moon-stars"></i>);
+                                            case '02n':
+                                                return(<i className="bi bi-cloud-moon"></i>);
+                                            case '03n':
+                                                return(<i className="bi bi-cloudy"></i>);
+                                            case '04n':
+                                                return(<i className="bi bi-clouds-fill"></i>);
+                                            case '09n':
+                                                return(<i className="bi bi-cloud-rain-fill"></i>);
+                                            case '10n':
+                                                return(<i className="bi bi-cloud-moon-fill"></i>);
+                                            case '11n':
+                                                return(<i className="bi bi-cloud-lightning-rain-fill"></i>);
+                                            case '13n':
+                                                return(<i className="bi bi-snow"></i>);
+                                            case '50n':
+                                                return(<i className="bi bi-cloud-fog"></i>);
                                             default:
                                                 return(<i className="bi bi-cloud-sun"></i>);
                                         }
                                     })()}
                                 </div>
                                 <div className="col temperature">
-                                    {props.temp}
+                                    now {props.weatherData.temp}°C
                                 </div>
                             </div>
                         </div>
@@ -57,6 +74,7 @@ export default function Overview(props) {
                                 </div>
                                 <div className="col">
                                     <p>Wind speed</p>
+                                    {props.weatherData.wind}
                                 </div>
                             </div>
                         </div>
@@ -71,6 +89,9 @@ export default function Overview(props) {
                                 </div>
                                 <div className="col">
                                     <p>Rain</p>
+                                    {props.weatherData.rain?
+                                        props.weatherData.rain
+                                        : '0%'}
                                 </div>
                             </div>
                         </div>
@@ -87,6 +108,7 @@ export default function Overview(props) {
                                 </div>
                                 <div className="col">
                                     <p>Sunrise</p>
+                                    {props.weatherData.sunrise}
                                 </div>
                             </div>
                         </div>
@@ -101,6 +123,7 @@ export default function Overview(props) {
                                 </div>
                                 <div className="col">
                                     <p>Sunset</p>
+                                    {props.weatherData.sunset}
                                 </div>
                             </div>
                         </div>

@@ -25,6 +25,20 @@
     color: #6bd2ff;
 }
 
+.form-input {
+    width: fit-content !important;
+}
+
+.search-form {
+    padding-top: 90px;
+    left: 52px;
+    position: relative;
+    animation: toggleSearch 1s linear;
+}
+@keyframes toggleSearch {
+    from {left: -200px;}
+    to {left: 52px;}
+}
 
 
 /* Add media queries for small screens (when the height of the screen is less than 450px, add a smaller padding and font-size) */
