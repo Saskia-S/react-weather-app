@@ -1,18 +1,40 @@
 import './overview.css'
+import {useEffect, useState} from "react";
 
 export default function Overview(props) {
     let weatherIcon = props.weatherData.icon;
-    console.log(weatherIcon);
+    let sunrise =  props.weatherData.sunrise;
+    let sunset =  props.weatherData.sunset;
+    const [riseMinutes, setRiseMinutes] = useState(null);
+    const [riseHours, setRiseHours] = useState(null);
+    const [dawnMinutes, setDawnMinutes] = useState(null);
+    const [dawnHours, setDawnHours] = useState(null);
+
+    useEffect(() => {
+        if(props.weatherData) {
+            let rise = new Date(sunrise * 1000);
+            let dawn = new Date(sunset * 1000);
+            setRiseHours(rise.getHours());
+            rise.getMinutes() <= 9 ? setRiseMinutes(`0${rise.getMinutes()}`) : setRiseMinutes(rise.getMinutes());
+            setDawnHours(dawn.getHours());
+            dawn.getMinutes() <= 9 ? setDawnMinutes(`0${dawn.getMinutes()}`) : setDawnMinutes(dawn.getMinutes());
+        }
+    }, [props])
 
     return(
         <div className="container">
             <div className="row">
-
+                <h3 className="pt-5 pb-3">Overview</h3>
+                <div className="row">
+                    <h3 className="pt-5 pb-3">{props.weatherData.city}</h3>
+                </div>
+            </div>
+            <div className="row">
                 <div className="col-12">
                     <div className="card">
                         <div className="card-body">
                             <div className="row">
-                                <div className="col-1">
+                                <div className="col-1 weather-icon">
                                     {(() => {
                                         switch(weatherIcon) {
                                             case '01d':
@@ -57,7 +79,10 @@ export default function Overview(props) {
                                     })()}
                                 </div>
                                 <div className="col temperature">
-                                    now {props.weatherData.temp}°C
+                                    {props.weatherData.temp ?
+                                        <p className="mb-0">now {props.weatherData.temp}°C</p>
+                                        : <p></p>
+                                    }
                                 </div>
                             </div>
                         </div>
@@ -74,7 +99,10 @@ export default function Overview(props) {
                                 </div>
                                 <div className="col">
                                     <p>Wind speed</p>
-                                    {props.weatherData.wind}
+                                    {props.weatherData.wind ?
+                                        <p className="mb-0">{props.weatherData.wind} m/s</p>
+                                        : <p></p>
+                                    }
                                 </div>
                             </div>
                         </div>
@@ -91,7 +119,8 @@ export default function Overview(props) {
                                     <p>Rain</p>
                                     {props.weatherData.rain?
                                         props.weatherData.rain
-                                        : '0%'}
+                                        : '0%'
+                                    }
                                 </div>
                             </div>
                         </div>
@@ -108,7 +137,10 @@ export default function Overview(props) {
                                 </div>
                                 <div className="col">
                                     <p>Sunrise</p>
-                                    {props.weatherData.sunrise}
+                                    {props.weatherData.sunrise ?
+                                        (`${riseHours}:${riseMinutes}`)
+                                        : <p></p>
+                                    }
                                 </div>
                             </div>
                         </div>
@@ -123,7 +155,10 @@ export default function Overview(props) {
                                 </div>
                                 <div className="col">
                                     <p>Sunset</p>
-                                    {props.weatherData.sunset}
+                                    { dawnHours ?
+                                        (`${dawnHours}:${dawnMinutes}`)
+                                    : <p></p>
+                                    }
                                 </div>
                             </div>
                         </div>

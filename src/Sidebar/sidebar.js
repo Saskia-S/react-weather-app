@@ -50,14 +50,13 @@ const Sidebar = (props) => {
         const req = axios.get(url);
         const res = await req;
         setWeatherData({
-            maindesc: res.data.weather[0].main,
             temp: res.data.main.temp,
             city: res.data.name,
             icon: res.data.weather[0].icon,
             wind: res.data.wind.speed,
             rain: res.data.rain,
             sunrise: res.data.sys.sunrise,
-            sunset: res.data.sys.sunset
+            sunset: res.data.sys.sunset,
         })
     }
 

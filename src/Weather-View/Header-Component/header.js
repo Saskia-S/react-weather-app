@@ -1,19 +1,22 @@
 import './header.css'
 
 export default function Header() {
+    let current = new Date();
+    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    let day = days[current.getDay()];
+    let dayNumber = current.getDate();
+    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    let month = months[current.getMonth()];
+    let year = current.getFullYear();
     return(
         <div className="container header-section">
-            <div className="row" align="right">
-                <div className="col-1">
-                    <h4 className="day">07</h4>
+            <div className="row" >
+                <div className="col" align="left">
+                    <h4 className="day">{day}, {dayNumber}.</h4>
                 </div>
-                <div className="col">
-                    <h4 className="month">August <span className="year">2022</span></h4>
+                <div className="col" align="right">
+                    <h4 className="month">{month} <span className="year">{year}</span></h4>
                 </div>
-            </div>
-
-            <div className="row">
-                <h3 className="pt-5 pb-3">Overview</h3>
             </div>
         </div>
 
