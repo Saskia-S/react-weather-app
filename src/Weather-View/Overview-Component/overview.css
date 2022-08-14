@@ -1,0 +1,17 @@
+.card {
+    margin: 0.5rem 0rem;
+    border: none !important;
+}
+.card-body {
+    background-color: #273c54;
+    color: white !important;
+    border-radius: 10px;
+}
+
+.weather-icon {
+    font-size: 30px;
+}
+
+.temperature {
+    font-size: 30px;
+}

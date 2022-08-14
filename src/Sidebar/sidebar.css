@@ -1,0 +1,48 @@
+/* Style the sidebar - fixed full height */
+.sidebar {
+    height: 100%;
+    width: fit-content;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #273c54;
+    overflow-x: hidden;
+    padding-top: 16px;
+}
+
+/* Style sidebar links */
+.sidebar a {
+    padding: 1rem;
+    text-decoration: none;
+    font-size: 20px;
+    color: #ffffff;
+    display: block;
+}
+
+/* Style links on mouse-over */
+.sidebar a:hover {
+    color: #6bd2ff;
+}
+
+.form-input {
+    width: fit-content !important;
+}
+
+.search-form {
+    padding-top: 90px;
+    left: 52px;
+    position: relative;
+    animation: toggleSearch 1s linear;
+}
+@keyframes toggleSearch {
+    from {left: -200px;}
+    to {left: 52px;}
+}
+
+
+/* Add media queries for small screens (when the height of the screen is less than 450px, add a smaller padding and font-size) */
+@media screen and (max-width: 600px) {
+    .sidebar {padding-top: 15px;}
+    .sidebar a {font-size: 18px;}
+}
